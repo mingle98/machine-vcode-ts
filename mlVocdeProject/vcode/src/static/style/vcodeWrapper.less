@@ -1,0 +1,133 @@
+@import './lib.less';
+@import './animation.less';
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+.vcodeWrap {
+    .vcodeWrapCom();
+    width: @vcodeWrapWidth;
+    .vcodeWrap-header {
+        .vcodeWrap-header();
+        position: relative;
+        padding: 5px;
+        text-align: center;
+        a {
+            color: @title-fontColor;
+            font-weight: 600;
+            font-size: @title-fontSize;
+            cursor: pointer;
+        }
+        .closeIcon {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: url('../imgs/close.png') no-repeat center center;
+            background-size: 100% 100%;
+            cursor: pointer;
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
+    .contentWrap {
+        width: 100%;
+        min-height: 2 / 3 * @min-vcodeWrapWidth;
+        max-height: 2 / 3 * @max-vcodeWrapWidth;
+        height: 2 / 3 * @vcodeWrapWidth;
+        // background-color: antiquewhite;
+        background-color: rgb(255, 255, 255);
+        position: relative;
+        overflow: hidden;
+        .contentWrapLoading {
+            display: none;
+            position: absolute;
+            z-index: 9;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, .8);
+            .contentWrapLoadinImg {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: @lodingWidth;
+                height: @lodingWidth;
+                background: url('../imgs/loading.png') no-repeat center center;
+                background-size: 100% 100%;
+                animation: loadingAnimation 1s linear infinite;
+            }
+            .errIcon {
+                display: none;
+                position: absolute;
+                left: 50%;
+                top: 30%;
+                transform: translate(-50%);
+                width: @errorImgWidth;
+                height: @errorImgWidth;
+                background: url('../imgs/errorReset.png') no-repeat center center;
+                background-size: 100% 100%;
+                cursor: pointer;
+                &::after {
+                    content: '网络错误,请点图标击重试';
+                    display: block;
+                    color: red;
+                    font-size: 14px;
+                    position: absolute;
+                    top: 140%;
+                    left: -60px;
+                    width: 160px;
+                }
+            }
+        }
+    }
+    .vcodeWrap-footer {
+        width: 100%;
+        padding: 5px;
+        text-align: center;
+        a {
+            font-size: @footer-fontSize;
+            color: @footer-fontColor;
+            cursor: pointer;
+        }
+    }
+}
+
+
+.dialogBox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.6);
+    .vcodeWrap {
+        .vcodeWrap;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.embedBox {
+    width: @vcodeWrapWidth;
+    min-width: @min-vcodeWrapWidth;
+    max-width: @max-vcodeWrapWidth;
+    box-shadow: 1px 1px 100px rgb(169, 169, 169);
+    .vcodeWrap {
+        .vcodeWrap;
+    }
+}
+
+.bodyFixed {
+    position: fixed;
+}

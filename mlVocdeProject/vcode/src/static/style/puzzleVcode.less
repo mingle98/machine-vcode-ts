@@ -1,0 +1,126 @@
+@import './lib.less';
+@import './animation.less';
+
+.puzzleVcodeBox {
+    width: 100%;
+    background-color: rgb(152, 152, 152);
+    min-height: 2 / 3 * @min-vcodeWrapWidth * 0.7;
+    // min-height: 2 / 3 * @min-vcodeWrapWidth2 * 0.7;
+    max-height: 2 / 3 * @max-vcodeWrapWidth * 0.7;
+    height: 2 / 3 * @vcodeWrapWidth * 0.7;
+    border-radius: 5px;
+    overflow: hidden;
+    .puzzleVcodeCanvasArea {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        canvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .puzzleVcodeReset {
+            width: @puzzleVcode-resetBthWidth;
+            height: @puzzleVcode-resetBthWidth;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: url('../imgs/reset2.png') no-repeat center center;
+            background-size: 100% 100%;
+            cursor: pointer;
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
+}
+
+.puzzleVcodeOperateBox {
+    -webkit-user-select:none;/*webkit浏览器*/ 
+    -moz-user-select:none;/*火狐*/ 
+    -ms-user-select:none;/*IE10*/ 
+    user-select:none;
+    min-height: 2 / 3 * @min-vcodeWrapWidth * 0.32;
+    max-height: 2 / 3 * @max-vcodeWrapWidth * 0.32;
+    height: 2 / 3 * @vcodeWrapWidth * 0.32;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    .puzzleVcodeTips {
+        height: 16px;
+        padding: 4px;
+        padding-top: 6px;
+        padding-bottom: 10px;
+        font-size: @puzzleVcodeTips-fontSize;
+        font-weight: 600;
+        // background-color: aquamarine;
+    }
+    .puzzleVcodeBarBox {
+        width: 100%;
+        min-height: 2 / 3 * @min-vcodeWrapWidth * 0.3 - 34px;
+        max-height: 2 / 3 * @max-vcodeWrapWidth * 0.3 - 34px;
+        height: 2 / 3 * @vcodeWrapWidth * 0.3 - 34px;
+        // background-color: rgb(59, 222, 38);
+        position: relative;
+    }
+}
+
+.puzzleVerifyAction_inbar {
+    background-color: rgb(0, 183, 238) !important;
+    border: 1px solid rgba(0, 183, 238, 1) !important;
+
+}
+
+.puzzleVerifyAction_outbar {
+    .puzzleVcodeInnerBarAction {
+        background-color: rgba(0, 183, 238, .2) !important;
+        border: 1px solid rgba(0, 183, 238, 1) !important;
+    }
+    // box-shadow: 0 0 5px rgb(0, 183, 238);
+}
+
+.puzzleVerifyAction_tips {
+    color: rgb(0, 183, 238);
+}
+
+.puzzleVerifyFail_inbar {
+    background-color: rgb(191, 0, 0) !important;
+    // animation: shake 1s linear initial;
+    border: 1px solid rgba(191, 0, 0, 1) !important;
+    animation: shake .5s;
+}
+.puzzleVerifyFail_shapCtx {
+    animation: shakeShape .5s;
+}
+
+.puzzleVerifyFail_outbar {
+    .puzzleVcodeInnerBarAction {
+        background-color: rgba(191, 0, 0, .2) !important;
+        border: 1px solid rgba(191, 0, 0, 1) !important;
+    }
+    // box-shadow: 0 0 5px rgb(191, 0, 0);
+}
+
+.puzzleVerifyFail_tips {
+    color: rgb(191, 0, 0);
+}
+
+
+.puzzleVerifySucc_inbar {
+    background-color: rgb(0, 185, 31) !important;
+    border: 1px solid rgba(0, 185, 31, 1) !important;
+}
+
+.puzzleVerifySucc_outbar {
+    .puzzleVcodeInnerBarAction {
+        background-color: rgba(0, 185, 31, .2) !important;
+        border: 1px solid rgba(0, 185, 31, 1) !important;
+    }
+    // box-shadow: 0 0 5px rgb(0, 185, 31);
+}
+
+.puzzleVerifySucc_tips {
+    color: rgb(0, 185, 31);
+}

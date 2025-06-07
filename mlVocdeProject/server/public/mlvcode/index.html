@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码</title>
+</head>
+<body>
+    初始化中,请稍后...
+    <!-- <div id="myVcodeContainer" style="width: 700px;height: 700px; background-color: aqua;overflow: hidden;"></div> -->
+    <script>
+        window.onload = function() {
+            let localhttp = location.protocol + '//' + location.host;
+            let mlVcode = boostrapFn({
+                    // 验证码类型
+                    vcodeType: ['puzzleVcode', 'clickVcode', 'roateVcode'],
+                    // vcodeType: 'roateVcode',
+                    // 当前网站是否是https的 默认false
+                    isHttps: true,
+                    // vcodeType: 'roateVcode',
+                    // 模式 弹窗模式 嵌入模式(default)
+                    mode: 'dialog',
+                    // 验证码模块容器  传id  字符串
+                    container: '#myVcodeContainer1',
+                    // clickVcodeConfig: {
+                    //     fontList: '姐姐姐姐姐姐介绍岁',
+                    //     imgList: [
+                    //         '1111'
+                    //     ]
+                    // },
+                    // puzzleVcodeConfig: {
+                    //     // 拼图形状 'puzzle' | 'rect' | 'round' | 'triangle'
+                    //     puZshape: 'puzzle',
+                    //     // 提示文案
+                    //     puZoperateTip: '请拖动完成拼图验证',
+                    //     puZimgList: [
+                    //         '22222'
+                    //     ]
+                    // },
+                    // 设备唯一id 可不传
+                    // cuid: '',
+                    roateVcodeConfig: {
+                        // 提示文案
+                        roateOperateTip: '请拖动将图片转正完成验证',
+                        roateimgList: [
+                        ]
+                    },
+                    customTxt: {
+                        headerConfig: {
+                            text: '登录安全验证',
+                            url: 'http://durobot.baidu.com/public/robotWeb/index.html'
+                        },
+                        footerConfig: {
+                            text: '关于百度',
+                            url: 'https://home.baidu.com/'
+                        }
+                    },
+                    // 是否开启server验证 默认不开启
+                    serverVerify: false,
+                    // 自定义后端验证的接口配置
+                    collectionDataOptios: {
+                        // 开启服务端验证接口自定义 且 serverVerify=true时生效
+                        open: false,
+                        //自定义数据上报接口 必须post方式
+                        postUrl: `${localhttp}/mlvcode`,
+                        //自定义数据上报接口调用钩子
+                        postUrlFn: function(resData) {
+                             // resData是自定义接口响应的内容
+                            console.log('postUrlFn....resData:', resData)
+                        },
+                        // 自定义初始化接口 必须post方式
+                        initpostUrl: `${localhttp}/initmlvcode `,
+                        // 自定义初始化接口调用的钩子函数
+                        postInitUrlFn: function(initSuccessHook, resData) {
+                            // resData是自定义接口响应的内容
+                            console.log('postInitUrlFn resData:', resData);
+                            // resData.data.code = -1
+                            if (resData.data.code === 0) {
+                                // 如果初始化成功 请调用initSuccessHook完成数据采集监听
+                                initSuccessHook();
+                                console.log('postInitData....ok')
+                            } else {
+                                console.log('postInitData....fail')
+                            }
+                        },
+                        // 自定义后端验证接口
+                        verifypostUrl: `${localhttp}/mlvcode`,
+                        // 自定义后端验证接口调用钩子
+                        verifypostUrlFn: function(resData, verifySuccessHook, verifyFailHook) {
+                            console.log('verifypostUrlFn....resData:', resData);
+                            if (resData.data.code === 0) {
+                                // 如果自定义验证接口验证成功 调用verifySuccessHook钩子让验证码展示通过状态(前提是前端验证也已经通过了)
+                                verifySuccessHook();
+                            } else {
+                                // 如果自定义验证接口验证不成功 调用verifyFailHook钩子让验证码展示失败状态
+                                verifyFailHook()
+                            }
+                        },
+                        // 自定义请求参数前置拦截函数(在中国函数中,您可以根据您的需求对请求中的明文数据进行加密等行为)
+                        // 注意:该配置仅在serverVerify=true和collectionDataOptios=>open=true两项配置开启时生效
+                        apiDataPreFn: function(apiData) {
+                            // apiData 是请求的参数 处理后请务必return 出该函数 否则你的处理将不会生效
+                            console.log('apiDataPreFn执行啦....apiData:', apiData, apiData.data);
+                            let myApiParams = apiData.data;
+                            // 我这里是对特定接口的请求参数进行扩展,您也可以进行加密等操作
+                            if (/\/initmlvcode/g.test(apiData.url)) {
+                                myApiParams.test = '这是测试数据';
+                            }
+                            // 我更改下请求数据
+                            apiData.data = myApiParams;
+                            return apiData;
+                        },
+                    },
+                    successFn: (rsp) => {
+                        console.log('自定义成功回调函数执行...', mlVcode);
+                        // mlVcode.switchShowVcode('hide');
+                    },
+                    failFn: (rsp) => {
+                        console.log('自定义失败回调函数执行...');
+                    },
+                    renderSucFn(rsp) {
+                        console.log('自定义失render调函数执行...');
+                    },
+            }).render();
+        };
+    </script>
+<script type="text/javascript" src="/api/built.js"></script></body>
+</html>

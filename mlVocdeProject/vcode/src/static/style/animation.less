@@ -1,0 +1,41 @@
+@keyframes loadingAnimation {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    from,
+    to {
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+    }
+    10%,30%, 50%, 70%, 90% {
+        -webkit-transform: translate(-3px, -50%);
+        transform: translate(-3px, -50%);
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate(3px, -50%);
+        transform: translate(3px, -50%);
+    }
+}
+
+
+@keyframes shakeShape {
+    from,
+    to {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+    10%,30%, 50%, 70%, 90% {
+        -webkit-transform: translate(-3px, 0);
+        transform: translate(-3px, 0);
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate(3px, 0);
+        transform: translate(3px, 0);
+    }
+}
