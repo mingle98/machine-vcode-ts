@@ -1,4 +1,4 @@
-# mingleVcode-ts
+# machine-vcode-ts
 
 ![案例图片](./imgList/demo.jpeg)
 
@@ -45,7 +45,7 @@ mlVocdeProject/
 1. 克隆项目
 ```bash
 git clone git@github.com:mingle98/machine-vcode-ts.git
-cd mingleVcode-ts
+cd machine-vcode-ts
 ```
 
 2. 安装依赖
