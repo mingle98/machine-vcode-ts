@@ -35,7 +35,7 @@ mlVocdeProject/
 
 ### 环境要求
 
-- Node.js >= 12.0.0
+- Node.js >= 16.0.0
 - Yarn >= 1.22.0
 
 ### 安装步骤

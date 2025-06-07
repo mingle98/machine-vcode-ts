@@ -1,0 +1,11 @@
+node_modules
+dist
+build
+coverage
+*.d.ts
+*.min.js
+*.config.js
+vite.config.ts
+.vscode
+webpack.config.js
+*.js 

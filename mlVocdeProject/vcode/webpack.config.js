@@ -6,14 +6,14 @@
 */
 
 const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');// eslint-disable-line import/no-extraneous-dependencies
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
   entry: './src/main.ts',
   output: {
     filename: 'api/built.js',
     path: resolve('../server/public/', 'mlvcode'),
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -47,9 +47,9 @@ module.exports = {
             loader: 'ts-loader',
             options: {
               transpileOnly: true,
-              experimentalWatchApi: true
-            }
-          }
+              experimentalWatchApi: true,
+            },
+          },
         ],
         exclude: /node_modules/,
       },
@@ -73,8 +73,8 @@ module.exports = {
     // 需要打包的文件后缀
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '@': resolve(__dirname, 'src')
-    }
+      '@': resolve(__dirname, 'src'),
+    },
   },
   plugins: [
     // plugins的配置
@@ -93,9 +93,9 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
-        pathRewrite: {'^/api': ''},
-        changeOrigin: true
-      }
-    }
+        pathRewrite: { '^/api': '' },
+        changeOrigin: true,
+      },
+    },
   },
 };
