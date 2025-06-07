@@ -1,5 +1,7 @@
 # machine-vcode-ts
 
+[English](./README.en.md) | 简体中文
+
 ![案例图片](./imgList/demo.jpeg)
 
 基于TypeScript的验证码生成模块，提供简单、可靠且易于集成的验证码解决方案。
