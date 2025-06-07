@@ -42,7 +42,7 @@ mlVocdeProject/
 
 1. 克隆项目
 ```bash
-git clone https://github.com/yourusername/mingleVcode-ts.git
+git clone git@github.com:mingle98/machine-vcode-ts.git
 cd mingleVcode-ts
 ```
 
@@ -258,6 +258,6 @@ collectionDataOptios: {
 
 ## 🔗 相关链接
 
-- [项目主页](https://github.com/yourusername/mingleVcode-ts)
-- [问题反馈](https://github.com/yourusername/mingleVcode-ts/issues)
+- [项目主页](https://github.com/mingle98/machine-vcode-ts)
+- [问题反馈](https://github.com/mingle98/machine-vcode-ts/issues)
 - [更新日志](CHANGELOG.md)
