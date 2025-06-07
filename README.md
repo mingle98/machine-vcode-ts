@@ -95,6 +95,9 @@ yarn build
 <script src="path/to/api/built.js"></script>
 ```
 
+**温馨提示**: 如果希望使用在线的built.js请参考以下这个使用文档: [https://luckycola.com.cn/public/docs/shares/sdk/ml-vcodes.html](https://luckycola.com.cn/public/docs/shares/sdk/ml-vcodes.html)
+
+
 2. 初始化验证码：
 ```html
 <div id="myVcodeContainer"></div>
